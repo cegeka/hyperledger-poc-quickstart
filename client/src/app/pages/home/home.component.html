@@ -1,0 +1,17 @@
+<app-banner></app-banner>
+<div class="pure-u-1 pure-u-md-1-3" style="margin-left:22%; width:60%; margin-top:10px">
+    <div class="pricing-table pricing-table-free">
+        <div class="pricing-table-header">
+            <h2 style="text-align:center">Customers</h2>
+        </div>
+        <table>
+            <tr>
+                <th>Customer</th>
+            </tr>
+            <tr *ngFor="let customer of customers; let i = index">
+                <td>{{customer['firstName']}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,5 @@
+# volume data
+.data/
+
+# files copied from server/fabric-tools/../
+explorer/crypto-config

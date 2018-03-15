@@ -1,0 +1,28 @@
+<div class="pure-menu pure-menu-horizontal">
+  <ul>
+    <li>
+      <a (click)="navigate()">Home</a>
+    </li>
+    <li>
+      <!-- Sample: including menu items available only to certain roles -->
+      <!-- <a [routerLink]="['/earn']" *ngIf="userService.loggedInRole == UserRole.Customer">Earn</a> -->
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Blockchain</a>
+      <div class="dropdown-content">
+        <a [routerLink]="['/blockchain']">Transactions</a>
+        <a [href]="monitorUrl" target=“_blank”>Explorer</a>
+      </div>
+    </li>
+    <li>
+      <a routerLink="/login" style="position:absolute; right:0; top:0" class="pure-menu-link">Log out</a>
+    </li>
+  </ul>
+
+</div>
+
+<div class="banner" style="cursor:pointer" (click)="navigate()">
+  <h1 class="banner-head">
+    @@ Hyperldeger composer quickstart User interface
+  </h1>
+</div>

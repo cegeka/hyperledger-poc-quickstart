@@ -1,0 +1,25 @@
+<div class="banner">
+<h1 class="banner-head" (click)="goToHome()">
+    @@ Hyperldeger composer quickstart User interface
+</h1>
+</div>
+
+
+<div class="pure-u-1 pure-u-md-1-3" style="margin-left:22%; width:60%">
+  <div class="pricing-table pricing-table-free">
+      <div class="pricing-table-header" >
+          <h2 style="text-align:center">Login</h2>
+      </div>
+
+      <p style="margin-left:45%">Username</p>
+      <input type="text" style="margin-left:45%" #username>
+      <p style="margin-left:45%">Password</p>
+      <input type="password" style="margin-left:45%" #password>
+
+      <button class="button-choose" style="margin-left:50%" (click) = "login(username.value, password.value)">Login</button>
+
+  </div>
+</div>
+
+
+

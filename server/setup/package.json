@@ -1,0 +1,15 @@
+{
+  "name": "poc-setup",
+  "version": "1.0.0",
+  "description": "Hyperledger Composert Fabric state intialisation script",
+  "main": "setup.js",
+  "scripts": {
+    "start": "node setup.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
