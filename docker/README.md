@@ -8,7 +8,13 @@ An additional nginx can be installed locally to enable HTTPs communication on to
 
 ## Setup Hyperledger composer
 
-1. Start Hyperledger Fabric
+1. Make sure you use the `hlfv11` version of the Fabric network. The environment variable must be set whenever running the fabric-tools scripts.
+
+```
+export FABRIC_VERSION=hlfv11
+```
+
+2. Start Hyperledger Fabric
 
 In the `server/fabric-tools/` folder, run the following scripts:
 
@@ -17,7 +23,7 @@ In the `server/fabric-tools/` folder, run the following scripts:
 ./startFabric.sh
 ```
 
-2. Initialize & Deploy Hyperledger Composer in Fabric
+3. Initialize & Deploy Hyperledger Composer in Fabric
 
 Deployment is automated via a docker-compose container. Run the following command in the `docker` folder:
 
@@ -28,7 +34,7 @@ Deployment is automated via a docker-compose container. Run the following comman
 The Docker container will start & auto-close once deployment is done. It will take care of registering a Peer Admin card (within the docker containers only), build the .bna file and deploy it on the Fabric network.
 This will also start the monitor MySQL database and the monitoring server to initialize the database tables. 
 
-3. Start all containers
+4. Start all containers
 
 Run the following script in the `docker` folder
 
@@ -38,7 +44,7 @@ docker-compose up -d
 
 or just run the `./start.sh` script
 
-4. Setup initial accounts & fabric data
+5. Setup initial accounts & fabric data
 
 Run the following script in the `docker` folder. Make sure the backend container is running
 
@@ -54,9 +60,10 @@ An Nginx proxy should be installed on the local machine to wrap the http port ex
 
 ## Exposed webservice
 
-The NginX Docker setup exposes the following services:
+The main VM NginX Docker setup exposes the following services:
 
-* main website = `<root URL>`
-* api = `<root URL>/api/`
-* Api explorer = `<root URL>/explorer/` (including trailing slash!)
-* Hyperledger monitor = `<root URL>:8080`
+* main admin website = `<root URL>:8080`
+* api = `<root URL>:8080/api/`
+* Api explorer = `<root URL>:8080/explorer/` (including trailing slash!)
+* Hyperledger monitor = `<root URL>:8090`
+* Mobile app = `https://<root URL>`

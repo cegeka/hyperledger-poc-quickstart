@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "request": "^2.83.0",
+    "sync-request": "^6.0.0",
     "request-promise": "^4.2.2"
   }
 }
