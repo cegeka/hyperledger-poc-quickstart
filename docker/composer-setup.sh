@@ -5,7 +5,7 @@ rm -rf explorer/crypto-config
 cp -r ../server/fabric-tools/fabric-scripts/hlfv11/composer/crypto-config explorer/crypto-config
 
 # build everyting
-# docker-compose build
+docker-compose build
 
 # create the backend container and run the deploy script only!
 docker-compose up --no-start backend
