@@ -3,7 +3,8 @@ FROM node:carbon
 USER root
 
 # Hyperledger specific runtime tools
-RUN npm install -g --unsafe-perm composer-rest-server@0.19.0 composer-cli@0.19.0
+# 29 March 2018 - v0.19.0 of composer-cli does not support the runtime install command
+RUN npm install -g --unsafe-perm composer-rest-server@0.18.0 composer-cli@0.18.0
 
 RUN mkdir /src
 WORKDIR /src

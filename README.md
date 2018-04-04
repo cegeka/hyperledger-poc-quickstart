@@ -59,11 +59,9 @@ In the `server/fabric-tools/` folder, run the following scripts:
 
 3. Setup backend on development machine. Run this in the `server` folder
 
-Before running the script, comment out the `./createAdminCard.sh` line in the deploy.sh file. This is meant to execute in the Dockers only (it will replace the hyperledger rest server connection information from localhost to Docker container names)
-
 ```bash
 npm install
-./deploy.sh
+./deploy-dev.sh
 ```
 
 4. Install frontend application dependencies. Run this in the `client` folder
