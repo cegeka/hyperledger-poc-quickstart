@@ -21,19 +21,4 @@ export class BannerComponent implements OnInit {
 
   ngOnInit() {    
   }
-
-  navigate() {
-    if (this.userService.loggedInRole == UserRole.Customer) {
-      this.router.navigate(['/customer']);
-    }
-    else if (this.userService.loggedInRole == UserRole.Shop) {
-      this.router.navigate(['/shop'])
-    }
-    else if (this.userService.loggedInRole == UserRole.Admin) {
-      this.router.navigate(['admin'])
-    }
-    else {
-      this.router.navigate(['/login'])
-    }
-  }
 }
