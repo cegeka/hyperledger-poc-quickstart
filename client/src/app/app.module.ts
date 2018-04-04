@@ -21,7 +21,6 @@ import { HistoryService } from './services/history.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { BannerComponent } from './components/banner/banner.component';
 
-import { Asset } from './dto/asset.dto';
 
 @NgModule({
   declarations: [

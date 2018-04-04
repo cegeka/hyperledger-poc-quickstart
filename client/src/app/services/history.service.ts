@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { Http, Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { HttpParams } from '@angular/common/http';
-import { Asset } from '../dto/asset.dto';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -15,7 +14,7 @@ export class HistoryService extends BaseResourceService {
     return this.jsonRequest('system/historian', HTTP_VERB.GET);
   }
 
-  getTx(transactionId: string): Observable<any> {    
+  getTx(transactionId: string): Observable<any> {
     return this.jsonRequest(`system/historian/${transactionId}`, HTTP_VERB.GET);
   }
 }

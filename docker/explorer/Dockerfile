@@ -2,10 +2,11 @@ FROM node:6-wheezy
 
 RUN apt-get update && apt-get install -y mysql-client gettext-base && apt-get clean
 
-# clone latest code from github
-RUN git clone --single-branch -b master --depth 1 https://github.com/hyperledger/blockchain-explorer
-
+# Latest code contains breaking changes, so use a specific revision instead
+#RUN git clone --single-branch -b master --depth 1 https://github.com/hyperledger/blockchain-explorer
+RUN git clone https://github.com/hyperledger/blockchain-explorer
 WORKDIR /blockchain-explorer
+RUN git checkout 7255942e7cad0c829d6189a54920c168e83fd1a6 && git reset --hard
 RUN npm install
 
 # copy & overwrite everything - local scripts, crypt-config folder, config.json

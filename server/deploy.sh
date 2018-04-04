@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Set Fabric version
+export FABRIC_VERSION=hlfv11
+
 # Create the admin certificate card, adapted for Dockerized Fabric use
-./createAdminCard.sh
+# ./createAdminCard.sh
 
 # Make sure dependencies are here
 npm install
