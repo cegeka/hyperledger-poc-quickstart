@@ -12,7 +12,7 @@ rm -rf .data
 
 # prepare the explorer build by copying the fabric certificates
 rm -rf explorer/crypto-config
-cp -r ./fabric-orchestrator/fabric-scripts/hlfv11/composer/crypto-config explorer/crypto-config
+cp -r ./fabric-orchestrator/fabric-tools/fabric-scripts/hlfv11/composer/crypto-config explorer/crypto-config
 
 # create the backend container and run the deploy script only!
 docker-compose up -d orchestrator

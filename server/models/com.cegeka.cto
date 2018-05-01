@@ -14,8 +14,3 @@ participant Admin identified by userId {
   o String userId
   o String name default = "admin"
 }
-
-participant UpdatedVersionUser identified by userId {
-  o String userId
-  o String name
-}

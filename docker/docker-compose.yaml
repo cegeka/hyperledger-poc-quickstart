@@ -74,7 +74,7 @@ services:
       - HL_FABRIC_TAG=1.1.0
       # Make sure the name passed here is identical to the network name set below
       - EXTERNAL_NETWORK_NAME=hyper-quickstart-poc
-      - HL_FILES_ROOT_PATH=${PWD}/fabric-orchestrator/fabric-scripts/hlfv11/composer/
+      - HL_FILES_ROOT_PATH=${PWD}/fabric-orchestrator/fabric-tools/fabric-scripts/hlfv11/composer/
       #- HL_FABRIC_DEVMODE=true
       # Apparently the Fabric container for the chaincode is not rebuilt unless the 
       # npm version number is incremented. Setting this to true will delete all the 

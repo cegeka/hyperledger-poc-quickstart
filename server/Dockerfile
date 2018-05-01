@@ -12,13 +12,9 @@ RUN npm install -g --unsafe-perm composer-rest-server@0.19.2 composer-cli@0.19.2
 RUN mkdir /src
 WORKDIR /src
 
-# add the fabric-specific scripts
-RUN mkdir ./fabric-tools
-
-RUN cd ./fabric-tools \
-  && curl -O https://raw.githubusercontent.com/alexbaloc/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz \
-  && tar -xvf fabric-dev-servers.tar.gz
-
+RUN curl -O https://raw.githubusercontent.com/alexbaloc/composer-tools/master/packages/fabric-orchestrator/download-fabric-tools.sh \
+  && chmod +x ./download-fabric-tools.sh \
+  && ./download-fabric-tools.sh
 
 # Not used - Copy a slow-changing version of package.json so the npm install command doesn't have to always start from zero
 # COPY package.json package.json

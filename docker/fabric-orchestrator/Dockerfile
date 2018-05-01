@@ -27,12 +27,11 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-co
 RUN chmod +x /usr/bin/docker-compose
 
 # when developing this container locally, can be replaced with COPY ./fabric-dev-servers ./fabric-tools
-RUN mkdir ./fabric-tools
-#COPY ./fabric-dev-servers ./fabric-tools
-WORKDIR ./fabric-tools
+RUN curl -O https://raw.githubusercontent.com/alexbaloc/composer-tools/master/packages/fabric-orchestrator/download-fabric-tools.sh \
+  && chmod +x ./download-fabric-tools.sh \
+  && ./download-fabric-tools.sh
 
-RUN curl -O https://raw.githubusercontent.com/alexbaloc/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
-RUN tar -xvf fabric-dev-servers.tar.gz
+WORKDIR ./fabric-tools
 
 COPY ./entrypoint.sh .
 RUN chmod +x ./entrypoint.sh
