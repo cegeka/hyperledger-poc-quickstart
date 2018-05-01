@@ -1,5 +1,6 @@
 # volume data
 .data/
+.DS_Store
 
 # files copied from server/fabric-tools/../
 explorer/crypto-config

@@ -3,6 +3,8 @@
 # Set Fabric version
 export FABRIC_VERSION=hlfv11
 
+./wait-for-it.sh peer0.org1.example.com:7051 -- echo "Fabric server started"
+
 # Create the admin certificate card, adapted for Dockerized Fabric use
 ./createAdminCard.sh
 

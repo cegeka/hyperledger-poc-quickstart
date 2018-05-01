@@ -1,5 +1,5 @@
 /**
- * Q8 Logic & model
+ * Basic model
  */
 
 namespace com.cegeka
@@ -10,43 +10,12 @@ participant Customer identified by customerId {
   o String lastName
 }
 
-participant Shop identified by shopId {
-  o String shopId
-  o String name
-}
-
-participant Q8Admin identified by userId {
+participant Admin identified by userId {
   o String userId
-  o String name default = "q8admin"
+  o String name default = "admin"
 }
 
-asset LoyaltyCard identified by cardId {
-  o String cardId
-  o Double balance default = 0.0
-  --> Customer owner
-}
-
-asset ShopAccount identified by shopId {
-  o String shopId
-  o Double coinBalance default = 0.0
-  o Double euroBalance default = 0.0
-  -->Shop owner
-}
-
-transaction Buy {
-  o Double amount
-  o String product
-  o Integer multiplier default = 1
-  --> LoyaltyCard card
-}
-
-transaction SpendCoins {
-  o Double euroPrice
-  o String product
-  --> ShopAccount shop
-  --> LoyaltyCard card
-}
-
-transaction SettleCoins {
-  --> ShopAccount shop
+participant UpdatedVersionUser identified by userId {
+  o String userId
+  o String name
 }

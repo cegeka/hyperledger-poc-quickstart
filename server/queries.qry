@@ -1,9 +1,3 @@
 /**
 * Queries
 */
-
-query selectBuyTransactions {
-  description: "List all buy transactions"
-  statement:
-    SELECT com.cegeka.Buy
-}
