@@ -39,10 +39,10 @@ docker-compose build
 
 2. Initialize & Deploy everything
 
-Deployment is automated via a docker-compose container. Run the following command in the `docker` folder:
+Deployment is automated via a docker-compose container. Run the following command in the `docker` folder as a superuser (required on Linux to delete the existing docker-compose volumes):
 
 ```bash
-./composer-setup.sh
+sudo ./composer-setup.sh
 ```
 
 Once the script is finished, the application will be left running and ready to be used.
