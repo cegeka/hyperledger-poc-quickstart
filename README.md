@@ -6,6 +6,10 @@ The projects containts a fully self-contained Docker-compose deployment environm
 
 ## Customize Hyperledger composer quickstart template
 
+### Customize project name
+
+Replace the hyperpoc name in both `server\package.json` and in the `docker\fabric-orchestrator\entrypoint.sh` file. The project name is used to generate the Hyperledger fabric chaincode containers which are automatically destroyed at each application setup. Changing this from the default will ensure other fabric containers are not affected.
+
 ### Add the Hyperledger composer code
 
 The following Hyperledger composer files must be updated with the proper business definition:
@@ -18,11 +22,7 @@ The following Hyperledger composer files must be updated with the proper busines
 ### Change composer data initialization script
 
 The script in `server/setup/setup.js` is meant to be ran after the composer network is started. It will create all pre-registed composer entities, like user accounts & initial assets.
-Customize the javascript file to create all entities by calling the `createComposerObject()` method with the following parameters:
-
-- objectName: Name of hyperledger composer DTO class to create
-- jsonBody: Json object fully describing the properties specified in the DTO class
-- logDescription: optional text to log upon successfull/failed oject creation
+Customize the javascript file to create all entities by calling the appropriate REST endpoints.
 
 ### Customize Frontend application
 
@@ -37,55 +37,18 @@ When customizing the frontend application, you can start from the following list
 
 ## Setup development environment
 
-See <https://hyperledger.github.io/composer/installing/development-tools.html> as well.
+The development environment is based on the production environment. All prerequisites are bundled in the Docker composer project from the `docker` folder. The backend will still run inside the docker container, as the composer-cli framework doesn't offer any means of JS debugging when ran on the local machine anyway. The frontend application can be started outside of the docker composer project and debugged locally.
 
-1. Install tools
+1. Start the production docker-compose by following the instructions in the `docker` folder to start a complete Hyperledger fabric network, build the composer .bna file and deploy it onto the network
 
-```bash
-npm install -g composer-cli
-npm install -g composer-rest-server
-npm install -g generator-hyperledger-composer
+2. Install the frontend application dependencies.
+
 ```
-
-2. Start Hyperledger
-
-In the `server/fabric-tools/` folder, run the following scripts:
-
-```bash
-./downloadFabric.sh
-./startFabric.sh
-./createPeerAdminCard.sh
-```
-
-3. Setup backend on development machine. Run this in the `server` folder
-
-```bash
-npm install
-./deploy-dev.sh
-```
-
-4. Install frontend application dependencies. Run this in the `client` folder
-
-```bash
+cd frontend
 npm install
 ```
+3. Start the frontend application development server. By default it will connect to http://localhost:3000 for the backend service, which is bound to the docker container 'hyper-backend'.
 
-5. Start the backend & frontend
-
-In the `client` folder
-
-```bash
-npm start
 ```
-
-In the `server` folder
-
-```bash
-npm start
-```
-
-6. One-time initialisation of the fabric assets. Run this in the `server` folder
-
-```bash
-npm run setup
+ng serve
 ```

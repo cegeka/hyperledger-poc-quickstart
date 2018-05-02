@@ -33,9 +33,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Customize the banner css scripts, layout, logo, etc.
 - Update both environment files (environments/environment.ts and environments/environment.prod.ts) and set MonitorUrl to the URL of a website monitoring the Fabric server used by the backend application
 
-## Basic components
-
-The application skeleton contains some components that should be usefull in all applications. These include:
-- 
-
-## Extending the template
+See the main repository README.md file for instructions on customizing the frontend code components
