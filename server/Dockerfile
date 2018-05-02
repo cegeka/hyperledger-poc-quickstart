@@ -12,7 +12,7 @@ RUN npm install -g --unsafe-perm composer-rest-server@0.19.4 composer-cli@0.19.4
 RUN mkdir /src
 WORKDIR /src
 
-RUN curl -O https://raw.githubusercontent.com/cegeka/composer-tools/master/packages/fabric-orchestrator/download-fabric-tools.sh \
+RUN curl -O https://raw.githubusercontent.com/cegeka/hyperledger-composer-tools/master/packages/fabric-orchestrator/download-fabric-tools.sh \
   && chmod +x ./download-fabric-tools.sh \
   && ./download-fabric-tools.sh
 

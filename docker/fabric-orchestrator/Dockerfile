@@ -27,7 +27,7 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-co
 RUN chmod +x /usr/bin/docker-compose
 
 # when developing this container locally, can be replaced with COPY ./fabric-dev-servers ./fabric-tools
-RUN curl -O https://raw.githubusercontent.com/cegeka/composer-tools/master/packages/fabric-orchestrator/download-fabric-tools.sh \
+RUN curl -O https://raw.githubusercontent.com/cegeka/hyperledger-composer-tools/master/packages/fabric-orchestrator/download-fabric-tools.sh \
   && chmod +x ./download-fabric-tools.sh \
   && ./download-fabric-tools.sh
 
