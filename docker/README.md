@@ -12,7 +12,7 @@ The docker-composer project contains all the components required to run the demo
 
 ### Orchestrator
 
-The orchestrator container uses Docker-in-Docker by mapping the host Docker socker within the orchestrator to be able to start the Fabric containers on the host. It's purpose is to wrap the scripts that are used to start/stop the Fabric servers that are part of the official hyperledger-composer-tools package. We use an adapted version of this package (https://github.com/alexbaloc/hyperledger-composer-tools/tree/master/packages/fabric-dev-servers) that allows the inner, Fabric docker-composer network to be joined to the docker-composer network of the parent orchestrator container.
+The orchestrator container uses Docker-in-Docker by mapping the host Docker socker within the orchestrator to be able to start the Fabric containers on the host. It's purpose is to wrap the scripts that are used to start/stop the Fabric servers that are part of the official hyperledger-composer-tools package. We use an adapted version of this package (https://github.com/cegeka/hyperledger-composer-tools/tree/master/packages/fabric-dev-servers) that allows the inner, Fabric docker-composer network to be joined to the docker-composer network of the parent orchestrator container.
 This container is configurable via environment parameters, that can specify which version of Hyperledger Fabric we're targeting:
 
 - `HL_FABRIC_VERSION` has to be set to `hlfv11`. Versions hlv1 (before fabric 1.1.0) are not supported by the template
