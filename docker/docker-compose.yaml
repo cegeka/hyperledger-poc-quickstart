@@ -63,6 +63,7 @@ services:
       # Debug purpose only
       - 8081:8080
     container_name: hyper-explorer
+    restart: always
 
   orchestrator:
     build:
