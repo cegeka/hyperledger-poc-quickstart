@@ -12,6 +12,7 @@ export class TxDetailComponent implements OnInit {
   json: Array<any>;
   id: string;
   private sub: any;
+  TransactionTypeKey = "transactionType";
 
   constructor(private historyService: HistoryService, private route: ActivatedRoute) {
   }
@@ -33,14 +34,19 @@ export class TxDetailComponent implements OnInit {
   // Support for custom transaction types
   addSpecificTx() {
     for (let jsonItem of this.json) {
-      if (jsonItem.key == 'transactionType' && jsonItem.value.substring('Buy') != -1) {
-        this.addBuyTx();
-      }
-      if (jsonItem.key == '$class' && jsonItem.value.substring('SpendCoins') != -1) {
-        this.addSpendCoinsTx();
+      if (jsonItem.key == this.TransactionTypeKey) {
+        if(jsonItem.value.indexOf('Buy') != -1) {
+          //jsonItem.value = 'Buy items';
+          this.addBuyTx();
+        }
+        if (jsonItem.value.indexOf('SpendCoins') != -1) {
+          //jsonItem.value = 'SpendCoins';
+          this.addSpendCoinsTx();
+        }        
       }
     }
   }
+
 
   addBuyTx() {
     /*
@@ -66,9 +72,12 @@ export class TxDetailComponent implements OnInit {
     */
   }
 
-  jsonContainsInfo(key: string) {
+  private jsonContainsInfo(key: string) {
     for (let item of this.json) {
-      return item.key == key;
+      if(item.key == key) {
+        return true;
+      }
     }
+    return false;
   }
 }

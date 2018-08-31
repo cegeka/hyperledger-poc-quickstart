@@ -3,7 +3,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatSelectModule, MatTableModule, MatSortModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -26,7 +27,7 @@ import { BannerComponent } from './components/banner/banner.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
+    HomeComponent,    
     BlockchainComponent,
     TxDetailComponent,
     SpinnerComponent,
@@ -38,11 +39,16 @@ import { BannerComponent } from './components/banner/banner.component';
     RouterModule.forRoot(routes),
     HttpModule,
     FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatTableModule,
     MatSortModule,
+    MatGridListModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [UserService, HistoryService],
   bootstrap: [AppComponent]
