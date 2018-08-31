@@ -16,7 +16,7 @@ export class BlockchainComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private historyService: HistoryService, private router: Router) {
+  constructor(private historyService: HistoryService) {
     this.blockchainRecords = [];
   }
 
@@ -26,10 +26,6 @@ export class BlockchainComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.blockchainRecords);
       this.dataSource.sort = this.sort;
     })
-  }
-
-  goToHome() {
-    this.router.navigate(['/'])
   }
 
   getInvoker(id: string) {

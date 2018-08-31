@@ -1,4 +1,4 @@
-FROM node:6-wheezy
+FROM node:8-jessie
 
 RUN apt-get update && apt-get install -y mysql-client gettext-base && apt-get clean
 

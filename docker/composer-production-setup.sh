@@ -5,7 +5,7 @@
 #
 
 # make sure everything is down
-docker-compose down
+docker-compose -f docker-compose-prod.yaml down
 
 #remove the old application state (mostly for the monitor database)
 rm -rf .data
@@ -15,23 +15,23 @@ rm -rf explorer/crypto-config
 cp -r ./fabric-orchestrator/fabric-tools/fabric-scripts/hlfv11/composer/crypto-config explorer/crypto-config
 
 # only after the above files are copied can we build the containers!
-docker-compose build
+docker-compose -f docker-compose-prod.yaml build
 
 # create the backend container and run the deploy script only!
-docker-compose up -d orchestrator
+docker-compose -f docker-compose-prod.yaml up -d orchestrator
 # a guess of how long it takes. We can't really make sure the peer servers have started & joined the network
 sleep 20
 
-docker-compose up --no-start backend
-docker-compose run backend ./deploy.sh
+docker-compose -f docker-compose-prod.yaml up --no-start backend
+docker-compose -f docker-compose-prod.yaml run backend ./deploy.sh
 
 # start the backend & import data
 ./add-data.sh
 
 # initialize the explorer database
-docker-compose up -d explorer-db
-docker-compose up --no-start explorer
-docker-compose run explorer ./initDb.sh
+docker-compose -f docker-compose-prod.yaml up -d explorer-db
+docker-compose -f docker-compose-prod.yaml up --no-start explorer
+docker-compose -f docker-compose-prod.yaml run explorer ./initDb.sh
 
 # Start everything
-docker-compose up -d
+docker-compose -f docker-compose-prod.yaml up -d
