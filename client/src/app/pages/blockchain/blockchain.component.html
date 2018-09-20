@@ -1,4 +1,12 @@
 <app-banner></app-banner>
+
+<div class="container">
+    <div class="jumbotron">
+      <h1><i class="fa fa-exchange-alt" style="color: #000000; "></i> Transactions</h1> 
+      <p>List of all blockchain updates</p> 
+    </div>
+  </div>
+
 <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"  matSortActive="transactionTimestamp" matSortDirection="desc" >
   <!-- <ng-container matColumnDef="participantInvoking">
     <mat-header-cell *matHeaderCellDef>Participant </mat-header-cell>
