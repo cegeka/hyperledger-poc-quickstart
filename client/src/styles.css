@@ -34,10 +34,12 @@ p {
 
 /*
  * -- BANNER --
- * The top banner on the login page.
+ * The top banner on the login page. Uncomment the second background line to use a background image on the login page
  */
 .banner {
-    background: transparent url('https://upload.wikimedia.org/wikipedia/commons/d/d1/Blockchain_Illustration.jpg');
+    background: #EEEEEE;
+    /* background: transparent url('https://upload.wikimedia.org/wikipedia/commons/d/d1/Blockchain_Illustration.jpg');
+    */
     text-align: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
