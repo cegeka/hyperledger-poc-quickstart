@@ -10,9 +10,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class HomeComponent implements OnInit {
   processing: boolean;
-  reduction: any;
   UserRole = UserRole; // used in the HTML ngIf conditions
-  loyaltyCard: any;
   monitorUrl: string;
 
   constructor(private userService: UserService, private router: Router) {
