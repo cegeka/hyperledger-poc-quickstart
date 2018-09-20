@@ -3,6 +3,20 @@ mat-table{
     margin:auto;
 }
 
+@media only screen and (max-width: 1100px) {
+    mat-table {
+      width: 85%;
+      margin: auto;
+    }
+  }
+
+@media only screen and (max-width: 800px) {
+    mat-table {
+      width: 95%;
+      margin: auto;
+    }
+  }
+
 td, th{
     width:25%;
     text-align: left;

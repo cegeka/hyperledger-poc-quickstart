@@ -1,17 +1,22 @@
 <app-banner></app-banner>
-  <table>
- <tr *ngFor="let item of json">
-   <ng-container *ngIf="item.key!='amount' && item.key!='euroPrice'">
-   <td>{{item.key}}</td>
-   <td>{{item.value}}</td>
-  </ng-container>
-  <ng-container *ngIf="item.key=='amount'">
+
+<table>
+  <tr *ngFor="let item of json">
+    
+    <ng-container *ngIf="item.key!='amount' && item.key!='euroPrice'">
+      <td>{{item.key}}</td>
+      <td>{{item.value}}</td>
+    </ng-container>
+
+    <ng-container *ngIf="item.key=='amount'">
       <td>Euros spent</td>
       <td>{{item.value}} euro</td>
      </ng-container>
-     <ng-container *ngIf="item.key=='euroPrice'">
-        <td>Price</td>
-        <td>{{item.value}} euro</td>
-       </ng-container>
- </tr>
+
+    <ng-container *ngIf="item.key=='euroPrice'">
+      <td>Price</td>
+      <td>{{item.value}} euro</td>
+    </ng-container>
+
+  </tr>
 </table>
