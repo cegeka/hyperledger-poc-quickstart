@@ -50,6 +50,6 @@ function createCustomer(customerId, firstName, lastName) {
 }
 
 createAdmin();
-createCustomer('customer1', 'Paulien', 'Lemay');
-createCustomer('customer2', 'Nele', 'Daels');
-createCustomer('customer3', 'Cristian', 'Sandu');
+createCustomer('customer1', 'First', 'Customer');
+createCustomer('customer2', 'Second', 'Customer');
+createCustomer('customer3', 'Third', 'Customer');
