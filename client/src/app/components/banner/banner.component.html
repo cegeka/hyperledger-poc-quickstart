@@ -8,9 +8,9 @@
         <span class="icon-bar"></span>
       </button>
       <!-- Create menu items for different user types based on the loggedInRole -->
-      <a class="navbar-brand" [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
-      <a class="navbar-brand" [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
-      <a class="navbar-brand" [routerLink]="['/']" *ngIf="!userService.loggedInRole"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px;" style="margin-top: -15px;"></a>
+      <a class="navbar-brand" [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><img src="assets/logo-placeholder.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
+      <a class="navbar-brand" [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><img src="assets/logo-placeholder.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
+      <a class="navbar-brand" [routerLink]="['/']" *ngIf="!userService.loggedInRole"><img src="assets/logo-placeholder.jpg" width="100px" height="50px;" style="margin-top: -15px;"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
