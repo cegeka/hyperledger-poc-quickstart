@@ -8,12 +8,15 @@
         <span class="icon-bar"></span>
       </button>
       <!-- Create menu items for different user types based on the loggedInRole -->
-      <a class="navbar-brand" [routerLink]="['/home']" *ngIf="userService.loggedInRole == UserRole.Admin"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
+      <a class="navbar-brand" [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
+      <a class="navbar-brand" [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
       <a class="navbar-brand" [routerLink]="['/']" *ngIf="!userService.loggedInRole"><img src="assets/client-logo-placeholder-300x115.jpg" width="100px" height="50px;" style="margin-top: -15px;"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a [routerLink]="['/home']"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
+        <li><a [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
+        <li><a [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
+        <li><a [routerLink]="['/']" *ngIf="!userService.loggedInRole"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-th"></i> Blockchain <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -24,7 +27,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ this.userService.loggedInRole }} <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ this.userService.loggedInUserName }} <span class="caret"></span></a>
             <ul class="dropdown-menu">  
               <li><a routerLink="/login" class=""><i style="color: #000000; font-size:18px;" class="fa fa-sign-out-alt"></i> Log out</a></li>
             </ul>
