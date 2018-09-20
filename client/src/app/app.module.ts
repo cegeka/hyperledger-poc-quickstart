@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/admin/home/home.component';
+import { HomeComponent } from './pages/admin/admin-home/home.component';
 import { CustomerComponent } from './pages/customer/customer-home/customer.component';
 import { BlockchainComponent } from './pages/blockchain/blockchain.component';
 import { TxDetailComponent } from './pages/tx-detail/tx-detail.component';
