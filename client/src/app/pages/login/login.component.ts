@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
     this.userService.login(user).subscribe((role) => {
         if (role === UserRole.Customer) {
           this.router.navigate(['/customer']);
-        } else if (role === UserRole.Shop) {
-          this.router.navigate(['/shop']);
         } else if (role === UserRole.Admin) {
           this.router.navigate(['/admin']);
         }
