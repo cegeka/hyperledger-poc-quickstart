@@ -2,7 +2,6 @@ import { LoginComponent } from "./pages/login/login.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { BlockchainComponent } from "./pages/blockchain/blockchain.component";
 import { TxDetailComponent } from "./pages/tx-detail/tx-detail.component";
-import { BlockchainLandingComponent } from "./pages/blockchain-landing/blockchain-landing.component";
 
 export const routes = [
     {
@@ -14,7 +13,7 @@ export const routes = [
         component: LoginComponent
     },
     {
-        path: 'admin',
+        path: 'home',
         component: HomeComponent
     },
     {
@@ -24,10 +23,6 @@ export const routes = [
     {
         path: 'detail/:id',
         component: TxDetailComponent
-    },
-    {
-        path: 'blockchain-explorer',
-        component: BlockchainLandingComponent
     }
 ];
 
