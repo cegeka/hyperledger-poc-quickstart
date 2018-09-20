@@ -8,15 +8,20 @@
       <td>{{item.value}}</td>
     </ng-container>
 
-    <ng-container *ngIf="item.key=='amount'">
-      <td>Euros spent</td>
-      <td>{{item.value}} euro</td>
-     </ng-container>
+    <!-- Add specific transaction details -->
+    <!--
 
-    <ng-container *ngIf="item.key=='euroPrice'">
-      <td>Price</td>
-      <td>{{item.value}} euro</td>
-    </ng-container>
+          <ng-container *ngIf="item.key=='amount'">
+            <td>Euros spent</td>
+            <td>{{item.value}} euro</td>
+          </ng-container>
+
+          <ng-container *ngIf="item.key=='euroPrice'">
+            <td>Price</td>
+            <td>{{item.value}} euro</td>
+          </ng-container>
+
+    -->
 
   </tr>
 </table>
