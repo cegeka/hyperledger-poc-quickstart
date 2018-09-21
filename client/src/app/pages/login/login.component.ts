@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     this.userService.cleanup();
   }
 
-  login(user: string, password: string) {
+  login(user: string) {
     this.userService.login(user).subscribe((role) => {
         if (role === UserRole.Customer) {
           this.router.navigate(['/customer']);
