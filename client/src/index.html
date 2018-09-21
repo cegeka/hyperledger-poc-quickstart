@@ -1,9 +1,16 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <!-- Material design --> 
         <link href="https://unpkg.com/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Font Awesome icons --> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        
+        <!-- sha256 --> 
+        <script src="assets/sha256.min.js"></script>
+
         <base href="/">
     </head>
     <body>
@@ -13,3 +20,31 @@
         <p>Hyperledger Composer Angular Quickstart Template</p>
     </div>
 </html>
+
+<!-- Scripts to fill the modals with correct user or table row data -->
+<script>
+        /* Get deleteId from table row */
+        $(document).on('show.bs.modal','#deleteCustomerModal', function (event) {
+                document.getElementById('deleteId').value = $(event.relatedTarget).parent().parent().find('td:first-child').text();
+            });
+
+        /* Get multiple values from table row */
+        $(document).on('show.bs.modal','#updateCustomerModal', function (event) {
+                document.getElementById('id1').value = $(event.relatedTarget).parent().parent().find('td:first-child').text();
+                document.getElementById('firstName1').value = $(event.relatedTarget).parent().parent().find('td:nth-child(2)').text();
+                document.getElementById('lastName1').value = $(event.relatedTarget).parent().parent().find('td:nth-child(3)').text();
+           });
+        
+        /* Get multiple values from element innerText in customer my account page */
+        $(document).on('show.bs.modal','#updateAccountModal', function (event) {
+                document.getElementById('id2').value = document.getElementById('accountUsername').value;
+                document.getElementById('passwordAccount').value = document.getElementById('passwordUser').value;
+                document.getElementById('firstName2').value = document.getElementById('accountFirstName').value;
+                document.getElementById('lastName2').value = document.getElementById('accountLastName').value;
+           });
+        
+           /* Calculate hash for user password update */
+        function myFunction() {
+        document.getElementById('passwordAccountHashResult').value = sha256(document.getElementById('passwordAccount').value);
+        }
+</script>
