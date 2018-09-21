@@ -1,4 +1,4 @@
 'use strict';
 /**
- * Transaction logic
+ * Hyperledger Composer business network definition: Script file
  */

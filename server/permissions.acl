@@ -1,5 +1,5 @@
 /**
- * Access control rules 
+ * Hyperledger Composer business network definition: Access control
  */
 rule Default {
     description: "Allow all participants access to all resources"
