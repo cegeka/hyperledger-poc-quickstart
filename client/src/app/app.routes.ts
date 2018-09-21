@@ -23,7 +23,7 @@ export const routes = [
         component: CustomerComponent
     },
     {
-        path: 'account',
+        path: 'my-account',
         component: AccountComponent
     },
     {
