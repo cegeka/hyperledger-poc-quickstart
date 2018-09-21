@@ -15,7 +15,6 @@ export class UserService extends BaseResourceService {
     this.loggedInUserName = null;
   }
 
-
   // retrieve customers
   getCustomers(): Observable<any> {
     return this.jsonRequest(`Customer`, HTTP_VERB.GET);
@@ -40,8 +39,8 @@ export class UserService extends BaseResourceService {
     });
   }
 
-   // update account
-   updateAccount(id: string, password: string, firstName: string, lastName: string): Observable<any> {    
+   // update customer
+  updateAccount(id: string, password: string, firstName: string, lastName: string): Observable<any> {    
     return this.jsonRequest(`Customer/${id}`, HTTP_VERB.PUT, {
       id: id,
       password: password,
