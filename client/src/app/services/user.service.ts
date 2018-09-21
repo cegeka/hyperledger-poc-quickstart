@@ -15,7 +15,51 @@ export class UserService extends BaseResourceService {
     this.loggedInUserName = null;
   }
 
+
+  // retrieve customers
+  getCustomers(): Observable<any> {
+    return this.jsonRequest(`Customer`, HTTP_VERB.GET);
+  }
+
+  // create customer
+  createCustomer(customerId: string, password: string, firstName: string, lastName: string): Observable<any> {    
+    return this.jsonRequest(`Customer`, HTTP_VERB.POST, {
+      customerId: customerId,
+      password: password,
+      firstName: firstName,
+      lastName: lastName
+    });
+  }
+
+  // update customer
+  updateCustomer(id: string, firstName: string, lastName: string): Observable<any> {    
+    return this.jsonRequest(`Customer/${id}`, HTTP_VERB.PUT, {
+      id: id,
+      firstName: firstName,
+      lastName: lastName
+    });
+  }
+
+   // update account
+   updateAccount(id: string, password: string, firstName: string, lastName: string): Observable<any> {    
+    return this.jsonRequest(`Customer/${id}`, HTTP_VERB.PUT, {
+      id: id,
+      password: password,
+      firstName: firstName,
+      lastName: lastName
+    });
+  }
+
+  // delete customer
+  deleteCustomer(id: string): Observable<any> {    
+    return this.jsonRequest(`Customer/${id}`, HTTP_VERB.DELETE, {
+      id: id
+    });
+  }
+
+  // log in with role
   public loginWithRole(userName: string, userRole: UserRole): Observable<UserRole> {
+    
     // clean up state
     this.cleanup();
 

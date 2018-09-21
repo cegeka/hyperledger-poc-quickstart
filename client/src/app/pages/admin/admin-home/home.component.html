@@ -2,7 +2,147 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1><i class="fa fa-home"></i> Home</h1> 
-        <p>Welcome {{ this.userService.loggedInRole }}!</p> 
+        <h1><i class="fa fa-users"></i> Manage user accounts</h1> 
+        <p>Welcome {{ this.userService.loggedInRole }}!</p>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createCustomerModal">
+            Create new customer
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- transaction alerts -->
+            <div class="alert alert-success alert-dismissible" id="alert-success1" role="alert" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>       
+                <a href="#" class="alert-link">You successfully added a new customer.</a>
+            </div>
+
+            <div class="" style="text-align:center;">
+                <!-- spinner -->
+                <div class="mdl-spin" id="spinner1">
+                    <svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                </div>  
+            </div>
+            <table class="table">
+                <tr>
+                    <th><b>Customer ID</b></th>
+                    <th><b>First name</b></th>
+                    <th><b>Last name</b></th>
+                    <th><b>Actions</b></th>
+                </tr>
+                <tr *ngFor="let customer of customers; let i = index">
+                    <td>{{customer.customerId}}</td>
+                    <td>{{customer.firstName}}</td>
+                    <td>{{customer.lastName}}</td>
+                    <td>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#updateCustomerModal" style="margin-bottom: 5px;">
+                            Update
+                        </button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteCustomerModal" style="margin-bottom: 5px;">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+           <!-- Create Customer modal -->
+           <div class="modal fade" id="createCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="customerId">Customer ID</label>
+                                    <input id="customerId" type="text" class="form-control" #customerId>
+                                </div>
+                                <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input id="password" type="text" class="form-control" #password>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input id="firstName" type="text" class="form-control" #firstName>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input id="lastName" type="text" class="form-control" #lastName>
+                                </div>  
+                            </form>     
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click) = "createCustomer(customerId.value, password.value, firstName.value, lastName.value)" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Update Customer modal -->
+           <div class="modal fade" id="updateCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="customerId">Customer ID</label>
+                                    <input id="id1" type="text" class="form-control" #id1 disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input id="firstName1" type="text" class="form-control" #firstName1>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input id="lastName1" type="text" class="form-control" #lastName1>
+                                </div>  
+                            </form>     
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click) = "updateCustomer(id1.value, firstName1.value, lastName1.value)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Customer modal -->
+           <div class="modal fade" id="deleteCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <p>Do you really want to delete this user?</p>
+                                </div>
+                                <div class="form-group" style="visibility: hidden; display: none;">
+                                    <label for="id">Customer ID</label>
+                                    <input id="deleteId" type="text" class="form-control" #deleteId>
+                                </div>
+                            </form>     
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click) = "deleteCustomer(deleteId.value)" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 </div>
