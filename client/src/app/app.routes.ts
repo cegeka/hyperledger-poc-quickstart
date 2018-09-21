@@ -1,6 +1,7 @@
 import { LoginComponent } from "./pages/login/login.component";
 import { HomeComponent } from "./pages/admin/admin-home/home.component";
 import { CustomerComponent } from "./pages/customer/customer-home/customer.component";
+import { AccountComponent } from "./pages/customer/customer-account/account.component";
 import { BlockchainComponent } from "./pages/blockchain/blockchain.component";
 import { TxDetailComponent } from "./pages/tx-detail/tx-detail.component";
 
@@ -15,11 +16,15 @@ export const routes = [
     },
     {
         path: 'admin',
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path: 'customer',
         component: CustomerComponent
+    },
+    {
+        path: 'account',
+        component: AccountComponent
     },
     {
         path: 'blockchain',

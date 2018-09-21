@@ -13,6 +13,7 @@ import { routes } from './app.routes';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/admin/admin-home/home.component';
 import { CustomerComponent } from './pages/customer/customer-home/customer.component';
+import { AccountComponent } from './pages/customer/customer-account/account.component';
 import { BlockchainComponent } from './pages/blockchain/blockchain.component';
 import { TxDetailComponent } from './pages/tx-detail/tx-detail.component';
 
@@ -29,6 +30,7 @@ import { BannerComponent } from './components/banner/banner.component';
     LoginComponent,
     HomeComponent,
     CustomerComponent,
+    AccountComponent,
     BlockchainComponent,
     TxDetailComponent,
     SpinnerComponent,
