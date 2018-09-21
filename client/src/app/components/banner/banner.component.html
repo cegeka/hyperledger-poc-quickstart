@@ -14,7 +14,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
+        <li><a [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><i class="fa fa-users" style="color: #000000; font-size:14px;"></i> User Management</a></li> 
         <li><a [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
         <li><a [routerLink]="['/']" *ngIf="!userService.loggedInRole"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
         <li class="dropdown">
@@ -29,6 +29,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ this.userService.loggedInUserName }} <span class="caret"></span></a>
             <ul class="dropdown-menu">  
+              <li><a routerLink="/account" *ngIf="userService.loggedInRole == UserRole.Customer" class=""><i style="color: #000000; font-size:18px;" class="fa fa-user"></i> My account</a></li>
               <li><a routerLink="/login" class=""><i style="color: #000000; font-size:18px;" class="fa fa-sign-out-alt"></i> Log out</a></li>
             </ul>
           </li>
