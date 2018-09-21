@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HistoryService } from '../../services/history.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tx-detail',
@@ -14,7 +15,14 @@ export class TxDetailComponent implements OnInit {
   private sub: any;
   TransactionTypeKey = "transactionType";
 
-  constructor(private historyService: HistoryService, private route: ActivatedRoute) {
+  constructor(private historyService: HistoryService, private route: ActivatedRoute, private location: Location) {
+  }
+
+  goBack() {
+    // window.history.back();
+    this.location.back();
+
+    console.log( 'goBack()...' );
   }
 
   ngOnInit() {
