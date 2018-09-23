@@ -1,25 +1,22 @@
 <app-banner></app-banner>
 
 <div class="container">
+    <!-- Page title jumbotron -->
     <div class="jumbotron">
         <h1><i class="fa fa-user"></i> {{ this.userService.loggedInUserName }}</h1>
-        <br>
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateAccountModal">
-            Update account
-        </button> 
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
 
-            <!-- transaction alerts -->
+            <!-- Transaction alerts -->
             <div class="alert alert-success alert-dismissible" id="alert-success1" role="alert" style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>       
                     <a href="#" class="alert-link">You successfully updated your account.</a>
             </div>
             
             <div class="" style="text-align:center;">
-                <!-- spinner -->
+                <!-- Spinner -->
                 <div class="mdl-spin" id="spinner1">
                     <svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                         <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
@@ -51,6 +48,11 @@
             </form>
 
         </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateAccountModal">
+                    <i class="fa fa-cog" style="color: #ffffff;"></i> Settings
+            </button> 
+        </div>
     </div>
 
     <!-- Update Account modal -->
@@ -64,12 +66,12 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="customerId">Customer ID</label>
+                                <label for="customerId">Username</label>
                                 <input id="id2" type="text" class="form-control" #id2 disabled>
                             </div>
                             <div class="form-group">
                                     <label for="customerId">Password</label>
-                                    <input onchange="myFunction()" id="passwordAccount" aria-describedby="passwordHelp" type="text" class="form-control" #passwordAccount>
+                                    <input oninput="hashFunction()" id="passwordAccount" aria-describedby="passwordHelp" type="text" class="form-control" #passwordAccount>
                                     <small id="passwordHelp" class="form-text text-muted">Write your new password here. The application stores the hash of your password.</small>
                                     <input style="visibility: hidden; display: none;" id="passwordAccountHashResult" type="text" class="form-control" #passwordAccountHashResult>
                                 </div>

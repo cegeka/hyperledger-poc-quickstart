@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSort, MatTableDataSource, MatSortable, Sort } from '@angular/material';
@@ -16,11 +17,15 @@ export class BlockchainComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private historyService: HistoryService) {
+  constructor(private historyService: HistoryService, private userService: UserService, private router: Router) {
     this.blockchainRecords = [];
   }
 
   ngOnInit() {
+    if (!this.userService.loggedInUser) {
+      this.router.navigate(['/login']);
+    }
+
     this.historyService.getBlockchainOverview().subscribe((response) => {
       this.blockchainRecords = Array.of(response)[0];
       this.dataSource = new MatTableDataSource(this.blockchainRecords);

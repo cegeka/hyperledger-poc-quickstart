@@ -12,12 +12,17 @@ export class CustomerComponent implements OnInit {
   processing: boolean;
   UserRole = UserRole; // used in the HTML ngIf conditions
   monitorUrl: string;
+  
 
   constructor(private userService: UserService, private router: Router) {
     this.monitorUrl = environment.MonitorUrl;
   }
 
   ngOnInit() {
+    if (!this.userService.loggedInUser) {
+      this.router.navigate(['/login']);
+      window.location.reload();
+    }  
   }
 
 }

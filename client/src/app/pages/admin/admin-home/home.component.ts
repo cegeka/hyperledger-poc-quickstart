@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.userService.loggedInUser) {
+      this.router.navigate(['/login']);
+      
+    }
+
     this.userService.getCustomers().subscribe(results => this.customers = results);
   }
 
@@ -35,7 +40,7 @@ export class HomeComponent implements OnInit {
         document.getElementById('alert-success1').style.display = 'block';
       }, 2000 );
       setTimeout( () => { 
-        document.getElementById('alert-success').style.display = 'none';
+        document.getElementById('alert-success1').style.display = 'none';
       }, 7000 );
     });
   }
@@ -47,10 +52,10 @@ export class HomeComponent implements OnInit {
     this.userService.getCustomers().subscribe(results => this.customers = results);
       setTimeout( () => { 
         spinner.style.display = "none";
-        document.getElementById('alert-success1').style.display = 'block';
+        document.getElementById('alert-update1').style.display = 'block';
       }, 2000 );
       setTimeout( () => { 
-        document.getElementById('alert-success').style.display = 'none';
+        document.getElementById('alert-update1').style.display = 'none';
       }, 7000 );
     });
   }
@@ -62,10 +67,10 @@ export class HomeComponent implements OnInit {
     this.userService.getCustomers().subscribe(results => this.customers = results);
       setTimeout( () => { 
         spinner.style.display = "none";
-        document.getElementById('alert-success1').style.display = 'block';
+        document.getElementById('alert-delete1').style.display = 'block';
       }, 2000 );
       setTimeout( () => { 
-        document.getElementById('alert-success').style.display = 'none';
+        document.getElementById('alert-delete1').style.display = 'none';
       }, 7000 );
     });
   }

@@ -20,9 +20,14 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.userService.loggedInUser) {
+      this.router.navigate(['/login']);
+      window.location.reload();
+    }
+    
     this.userService.getCustomers().subscribe(results => this.customers = results);
-  }
-
+  } 
+  
   updateAccount(id: string, password: string, firstName: string, lastName: string) {
     var spinner = document.getElementById("spinner1");
     spinner.style.display = "block"; 

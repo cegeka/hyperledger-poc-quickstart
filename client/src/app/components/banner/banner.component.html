@@ -8,16 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- Create logo routerlink for different user types based on the loggedInRole -->
+      <!-- Create logo routerlink for different user types based on loggedInRole -->
       <a class="navbar-brand" [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><img src="assets/logo-placeholder.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
       <a class="navbar-brand" [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><img src="assets/logo-placeholder.jpg" width="100px" height="50px" style="margin-top: -15px;"></a>
       <a class="navbar-brand" [routerLink]="['/']" *ngIf="!userService.loggedInRole"><img src="assets/logo-placeholder.jpg" width="100px" height="50px;" style="margin-top: -15px;"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!-- Create left menu item routerlinks for different user types based on the loggedInRole -->
+        <!-- Create left menu item routerlinks for different user types based on loggedInRole -->
         <li><a [routerLink]="['/admin']" *ngIf="userService.loggedInRole == UserRole.Admin"><i class="fa fa-users" style="color: #000000; font-size:14px;"></i> User Management</a></li> 
-        <li><a [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
+        <li><a [routerLink]="['/customer']" *ngIf="userService.loggedInRole == UserRole.Customer"><i class="fa fa-tachometer-alt" style="color: #000000; font-size:14px;"></i> Dashboard</a></li> 
         <li><a [routerLink]="['/']" *ngIf="!userService.loggedInRole"><i class="fa fa-home" style="color: #000000; font-size:14px;"></i> Home</a></li> 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-th"></i> Blockchain <span class="caret"></span></a>
@@ -28,7 +28,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!-- Create dropdown navbar right menu items based on the loggedInRole -->
+        <!-- Create dropdown navbar right menu items based on loggedInRole -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ this.userService.loggedInUserName }} <span class="caret"></span></a>
             <ul class="dropdown-menu">  
