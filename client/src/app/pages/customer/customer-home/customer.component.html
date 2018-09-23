@@ -2,7 +2,38 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1><i class="fa fa-home"></i> Home</h1> 
+        <h1><i class="fa fa-tachometer-alt"></i> Dashboard</h1> 
         <p>Welcome {{ this.userService.loggedInUser.firstName }} {{ this.userService.loggedInUser.lastName }}!</p> 
     </div>
+
+
+    
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="card" style="width: 36rem;">
+                    <i class="fa fa-balance-scale fa-5x" style="width: 50px; height: 120px; color: #333333"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Transfer assets</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a [routerLink]="['/assets']" class="btn btn-primary">Manage assets</a>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+                <div class="card" style="width: 36rem;">
+                    <i class="fa fa-user fa-5x" style="width: 50px; height: 120px; color: #333333"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Manage identity</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a routerLink="/my-account" class="btn btn-primary">My account</a>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    
+
 </div>
