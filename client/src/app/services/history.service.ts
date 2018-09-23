@@ -17,4 +17,10 @@ export class HistoryService extends BaseResourceService {
   getTx(transactionId: string): Observable<any> {
     return this.jsonRequest(`system/historian/${transactionId}`, HTTP_VERB.GET);
   }
+
+  getAssetTransferredTx(transactionId: string): Observable<any> {
+    return this.jsonRequest(`Trade/${transactionId}`, HTTP_VERB.GET);
+  }
+
+
 }

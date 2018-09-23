@@ -1,7 +1,9 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HistoryService } from '../../services/history.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tx-detail',
@@ -15,7 +17,7 @@ export class TxDetailComponent implements OnInit {
   private sub: any;
   TransactionTypeKey = "transactionType";
 
-  constructor(private historyService: HistoryService, private route: ActivatedRoute, private location: Location) {
+  constructor(private historyService: HistoryService, private userService: UserService, private route: ActivatedRoute, private router: Router, private location: Location) {
   }
 
   goBack() {
@@ -26,6 +28,10 @@ export class TxDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.userService.loggedInUser) {
+      this.router.navigate(['/login']);
+    }
+    
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -43,41 +49,25 @@ export class TxDetailComponent implements OnInit {
   addSpecificTx() {
     for (let jsonItem of this.json) {
       if (jsonItem.key == this.TransactionTypeKey) {
-        if(jsonItem.value.indexOf('Buy') != -1) {
-          //jsonItem.value = 'Buy items';
-          this.addBuyTx();
+        if(jsonItem.value.indexOf('Trade') != -1) {
+          jsonItem.value = 'Asset transferred';
+          this.addAssetTransferred();
         }
-        if (jsonItem.value.indexOf('SpendCoins') != -1) {
-          //jsonItem.value = 'SpendCoins';
-          this.addSpendCoinsTx();
-        }        
       }
     }
   }
 
 
-  addBuyTx() {
-    /*
-    this.historyService.getBuyTx(this.id).subscribe((response) => {
-      for (let key in response) {
-        if (!this.jsonContainsInfo(key)) {
-          this.json.push({ key: key, value: response[key] });
-        }
-      }
-    });
-    */
+  addAssetTransferred() {
+    this.historyService.getAssetTransferredTx(this.id).subscribe(this.addAllFields.bind(this));
   }
 
-  addSpendCoinsTx(){
-    /*
-    this.historyService.getSpendCoinsTx(this.id).subscribe((response) => {
-      for (let key in response) {
-        if (!this.jsonContainsInfo(key)) {
-          this.json.push({ key: key, value: response[key] });
-        }
+  private addAllFields(response) {
+    for (let key in response) {
+      if (!this.jsonContainsInfo(key)) {
+        this.json.push({ key: key, value: response[key] });
       }
-    });
-    */
+    }
   }
 
   private jsonContainsInfo(key: string) {

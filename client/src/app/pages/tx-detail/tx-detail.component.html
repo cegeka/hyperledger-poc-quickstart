@@ -1,33 +1,58 @@
 <app-banner></app-banner>
 <div class="container">
+  <div class="jumbotron">
+    <h1><i class="fa fa-exchange-alt"></i> Tx detail</h1> 
+    <div *ngFor="let item of json">
+      <ng-container *ngIf="item.key=='transactionId'">
+        <p class="txid">{{item.value}}</p>
+      </ng-container>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-12">
-      <table>
+      <table class="table">
         <tr *ngFor="let item of json">
-    
-          <ng-container *ngIf="item.key!='amount' && item.key!='euroPrice'">
-            <td>{{item.key}}</td>
+         
+          <ng-container *ngIf="item.key=='transactionType'">
+            <td>Transaction Type</td>
             <td>{{item.value}}</td>
           </ng-container>
 
+           <ng-container *ngIf="item.key=='tradeable'">
+            <td>Asset</td>
+            <td>{{item.value.split('.')[2]}}</td>
+          </ng-container>
+
+          <ng-container *ngIf="item.key=='sender'">
+            <td>Sender</td>
+            <td>{{item.value}}</td>
+          </ng-container>
+
+          <ng-container *ngIf="item.key=='newOwner'">
+            <td>New Owner</td>
+            <td>{{item.value}}</td>
+          </ng-container>
+
+          <ng-container *ngIf="item.key=='transactionTimestamp'">
+            <td>Timestamp</td>
+            <td>{{item.value | date:'dd MMM yyyy, HH:mm:ss'}}</td>
+          </ng-container>
+
           <!-- Add specific transaction details -->
-          <!--
-
-          <ng-container *ngIf="item.key=='amount'">
-            <td>Euros spent</td>
+          
+          <!-- 
+          <ng-container *ngIf="item.key=='newOwner'">
+            <td>New owner</td>
             <td>{{item.value}} euro</td>
           </ng-container>
+           -->
+         
 
-          <ng-container *ngIf="item.key=='euroPrice'">
-            <td>Price</td>
-            <td>{{item.value}} euro</td>
-          </ng-container>
-
-          -->
+          
 
             </tr>
           </table>
-          <br>
           <button class="btn btn-primary" (click)="goBack()">
             <i class="fa fa-arrow-left" style="color: #ffffff"></i> Back
           </button>
