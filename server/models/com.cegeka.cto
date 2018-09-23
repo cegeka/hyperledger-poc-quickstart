@@ -20,10 +20,23 @@ participant Admin identified by userId {
 
 // 2. Assets
 
+asset Tradeable identified by assetId {
+  o String assetId
+  o String description
+  o String owner
+  o String previousOwner optional
+}
+
 // 3. Enums
 
 // 4. Concepts
 
 // 5. Transactions
+
+transaction Trade {
+  --> Tradeable tradeable
+  o String sender
+  o String newOwner
+}
 
 // 6. Events
