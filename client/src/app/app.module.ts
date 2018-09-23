@@ -10,14 +10,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
+import { FilterPipe } from './pipes/filter.pipe';
+
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/admin/admin-home/home.component';
 import { CustomerComponent } from './pages/customer/customer-home/customer.component';
 import { AccountComponent } from './pages/customer/customer-account/account.component';
+import { AssetsComponent } from './pages/customer/customer-assets/assets.component';
 import { BlockchainComponent } from './pages/blockchain/blockchain.component';
 import { TxDetailComponent } from './pages/tx-detail/tx-detail.component';
 
 import { UserService } from './services/user.service';
+import { AssetService } from './services/asset.service';
 import { HistoryService } from './services/history.service';
 
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -31,10 +35,12 @@ import { BannerComponent } from './components/banner/banner.component';
     HomeComponent,
     CustomerComponent,
     AccountComponent,
+    AssetsComponent,
     BlockchainComponent,
     TxDetailComponent,
     SpinnerComponent,
     BannerComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,10 @@ import { BannerComponent } from './components/banner/banner.component';
     MatIconModule,
     MatDialogModule,
   ],
-  providers: [UserService, HistoryService],
+  providers: [UserService, HistoryService, AssetService],
+  exports: [
+    FilterPipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

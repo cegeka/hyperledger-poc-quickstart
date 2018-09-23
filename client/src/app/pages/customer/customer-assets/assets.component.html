@@ -1,0 +1,167 @@
+<app-banner></app-banner>
+
+<div class="container">
+    <!-- Page title jumbotron -->
+    <div class="jumbotron">
+        <h1><i class="fa fa-balance-scale"></i> Assets </h1> 
+        <p>Manage your assets</p> 
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssetModal">
+            Create new asset
+        </button>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+    
+            <!-- Transaction alerts -->
+            <div class="alert alert-success alert-dismissible" id="alert-success-trade" role="alert" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>       
+                <a href="#" class="alert-link">You successfully added a new asset.</a>
+            </div>
+
+            <div class="alert alert-success alert-dismissible" id="alert-success-transaction" role="alert" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>       
+                <a href="#" class="alert-link">You successfully transferred your asset.</a>
+            </div>
+
+            <!-- Spinner -->
+            <div class="" style="text-align:center;">
+                <div class="mdl-spin" id="spinner-trade">
+                    <svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                </div>  
+            </div>
+
+            <!-- Table -->
+            <table class="table" id="myTable2">
+                <tr>
+                    <th><b>Asset ID</b></th>
+                    <th><b>Description</b></th>
+                    <th><b>Actions</b></th>
+                </tr>
+                <tr *ngFor="let tradeable of tradeables | filter : 'owner' : this.userService.loggedInUserName; let i = index;">
+                    <td>{{tradeable.assetId}}</td>
+                    <td>{{tradeable.description}}</td>
+                    <td>
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#updateAssetModal" style="margin-bottom: 5px;">
+                            Update
+                        </button>
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#transferAssetModal" style="margin-bottom: 5px;">
+                            Transfer
+                        </button>
+
+                    </td>
+                </tr>
+            </table>
+    
+            <!-- Create Asset modal -->
+            <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add asset</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="assetId">Asset ID</label>
+                                    <input id="assetId" type="text" class="form-control" #assetId>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input id="description" type="text" class="form-control" #description>
+                                </div>
+                                <div class="form-group" style="visibility: hidden; display: none;">
+                                    <label for="owner">Owner</label>
+                                    <input id="owner" type="text" class="form-control" value="{{ this.userService.loggedInUserName }}" #owner>
+                                </div>  
+                            </form>     
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click) = "createTradeable(assetId.value, description.value, owner.value)" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Update Asset modal -->
+            <div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update asset</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="assetId1">Asset ID</label>
+                                        <input id="assetId1" type="text" class="form-control" #assetId1>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description1">Description</label>
+                                        <input id="description1" type="text" class="form-control" #description1>
+                                    </div>
+                                    <div class="form-group" style="visibility: hidden; display: none;">
+                                        <label for="owner1">Owner</label>
+                                        <input id="owner1" type="text" class="form-control" value="{{ this.userService.loggedInUserName }}" #owner1>
+                                    </div>  
+                                </form>     
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button (click) = "updateTradeable(assetId1.value, description1.value, owner1.value)" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <!-- Transfer asset modal -->
+            <div class="modal fade" id="transferAssetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Transfer asset</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="tradeable">Asset ID</label>
+                                <input id="tradeable" type="text" class="form-control" #tradeable>
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                    <label for="newOwner">New Owner</label>
+                                    <input id="newOwner" type="text" class="form-control" #newOwner>
+                            </div>
+                            -->
+                            <div class="form-group">
+                                <label for="newOwner">New Owner</label>
+                                <select class="form-control" id="newOwner" #newOwner>
+                                    <option *ngFor="let customer of customers; let i = index;"><div *ngIf="customer.customerId !== this.userService.loggedInUserName">{{customer.customerId}}</div></option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="visibility: hidden; display: none;">
+                                    <label for="sender">Sender</label>
+                                    <input id="sender" type="text" class="form-control" value="{{ this.userService.loggedInUserName }}" #sender>
+                                </div>   
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click) = "tradeCommodity(tradeable.value, sender.value, newOwner.value)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
