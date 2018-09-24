@@ -26,7 +26,6 @@ export class AssetsComponent implements OnInit {
   ngOnInit() {
     if (!this.userService.loggedInUser) {
       this.router.navigate(['/login']);
-      window.location.reload();
     }  
 
     this.assetService.getTradeables().subscribe(results => this.tradeables = results);
