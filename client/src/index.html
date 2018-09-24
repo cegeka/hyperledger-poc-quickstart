@@ -34,6 +34,15 @@
                 document.getElementById('firstName1').value = $(event.relatedTarget).parent().parent().find('td:nth-child(2)').text();
                 document.getElementById('lastName1').value = $(event.relatedTarget).parent().parent().find('td:nth-child(3)').text();
            });
+
+        $(document).on('show.bs.modal','#transferAssetModal', function (event) {
+                document.getElementById('tradeable').value = $(event.relatedTarget).parent().parent().find('td:first-child').text();
+        });
+
+        $(document).on('show.bs.modal','#updateAssetModal', function (event) {
+                document.getElementById('assetId1').value = $(event.relatedTarget).parent().parent().find('td:first-child').text();
+                document.getElementById('description1').value = $(event.relatedTarget).parent().parent().find('td:nth-child(2)').text();
+        });
         
         /* Get multiple values from element innerText in customer my account page */
         $(document).on('show.bs.modal','#updateAccountModal', function (event) {
@@ -72,7 +81,6 @@
         }      
     }
 
-
     function searchFunction1() {
          // Declare variables 
         var input, filter, table, tr, td, i;
@@ -94,4 +102,4 @@
         }      
     }
 
-      </script>
+</script>
