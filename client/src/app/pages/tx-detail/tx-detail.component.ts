@@ -23,7 +23,6 @@ export class TxDetailComponent implements OnInit {
   goBack() {
     // window.history.back();
     this.location.back();
-
     console.log( 'goBack()...' );
   }
 
@@ -56,7 +55,6 @@ export class TxDetailComponent implements OnInit {
       }
     }
   }
-
 
   addAssetTransferred() {
     this.historyService.getAssetTransferredTx(this.id).subscribe(this.addAllFields.bind(this));

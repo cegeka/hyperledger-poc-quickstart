@@ -13,7 +13,8 @@
     <div class="col-md-12">
       <table class="table">
         <tr *ngFor="let item of json">
-         
+          
+         <!-- Add specific transaction details -->
           <ng-container *ngIf="item.key=='transactionType'">
             <td>Transaction Type</td>
             <td>{{item.value}}</td>
@@ -39,23 +40,9 @@
             <td>{{item.value | date:'dd MMM yyyy, HH:mm:ss'}}</td>
           </ng-container>
 
-          <!-- Add specific transaction details -->
-          
-          <!-- 
-          <ng-container *ngIf="item.key=='newOwner'">
-            <td>New owner</td>
-            <td>{{item.value}} euro</td>
-          </ng-container>
-           -->
-         
-
-          
-
-            </tr>
-          </table>
-          <button class="btn btn-primary" (click)="goBack()">
-            <i class="fa fa-arrow-left" style="color: #ffffff"></i> Back
-          </button>
-        </div>
-      </div>
+        </tr>
+      </table>
+      <button class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left" style="color: #ffffff"></i> Back</button>
+    </div>
   </div>
+</div>
