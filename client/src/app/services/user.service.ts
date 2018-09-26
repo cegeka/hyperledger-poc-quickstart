@@ -57,7 +57,7 @@ export class UserService extends BaseResourceService {
   }
 
   // log in with role
-  public loginWithRole(userName: string, userRole: UserRole): Observable<UserRole> {
+  public loginWithRole(userName: string, userRole: UserRole, password: string): Observable<UserRole> {
     
     // clean up state
     this.cleanup();
@@ -71,6 +71,13 @@ export class UserService extends BaseResourceService {
 
     return this.jsonRequest(`${userRole.toString()}/${userName}`, HTTP_VERB.GET)
       .map((res) => {
+
+        /*
+        if (!password || password != userName.slice(0, -('demo.com'.length))) {
+          throw 'Invalid password';
+        }
+        */
+       
         this.loggedInUser = res;
         this.loggedInUserName = userName;
         this.loggedInRole = userRole;
@@ -78,10 +85,10 @@ export class UserService extends BaseResourceService {
       });
   }
 
-  public login(userName: string): Observable<UserRole> {
+  public login(userName: string, password: string): Observable<UserRole> {
     const userRole = this.getUserRole(userName);
 
-    return this.loginWithRole(userName, userRole);
+    return this.loginWithRole(userName, userRole, password);
   }
 
   private getUserRole(userName): UserRole {

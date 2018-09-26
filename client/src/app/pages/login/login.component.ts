@@ -8,6 +8,7 @@ import { UserService, UserRole } from '../../services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  error: string;
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -15,8 +16,9 @@ export class LoginComponent implements OnInit {
     this.userService.cleanup();
   }
 
-  login(user: string) {
-    this.userService.login(user).subscribe((role) => {
+  login(user: string, password: string) {
+    this.error = '';
+    this.userService.login(user, password).subscribe((role) => {
         if (role === UserRole.Customer) {
           this.router.navigate(['/customer']);
         } else if (role === UserRole.Admin) {
@@ -24,6 +26,11 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
+        if (typeof(error) == 'string') {
+          this.error = error
+        } else {
+          this.error = "Login failed";
+        }
         console.error('Login failed', error);
     });
   }
