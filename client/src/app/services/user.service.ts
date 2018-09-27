@@ -40,10 +40,9 @@ export class UserService extends BaseResourceService {
   }
 
    // update customer
-  updateAccount(id: string, password: string, firstName: string, lastName: string): Observable<any> {    
+  updateAccount(id: string, firstName: string, lastName: string): Observable<any> {    
     return this.jsonRequest(`Customer/${id}`, HTTP_VERB.PUT, {
       id: id,
-      password: password,
       firstName: firstName,
       lastName: lastName
     });
@@ -72,11 +71,11 @@ export class UserService extends BaseResourceService {
     return this.jsonRequest(`${userRole.toString()}/${userName}`, HTTP_VERB.GET)
       .map((res) => {
 
-        /*
-        if (!password || password != userName.slice(0, -('demo.com'.length))) {
+        
+        if (!password || password != userName) {
           throw 'Invalid password';
         }
-        */
+        
        
         this.loggedInUser = res;
         this.loggedInUserName = userName;
