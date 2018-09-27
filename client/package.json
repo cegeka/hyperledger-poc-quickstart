@@ -26,6 +26,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "2.4.1",
     "jquery": "^3.3.1",
+    "ng2-bootstrap-modal": "https://github.com/Sky4CE/ng2-bootstrap-modal/tarball/v.1.0.2",
     "rxjs": "5.5.2",
     "zone.js": "0.8.14"
   },
