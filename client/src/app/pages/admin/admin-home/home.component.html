@@ -5,14 +5,9 @@
     <div class="jumbotron">
         <h1><i class="fa fa-users"></i> Manage users</h1> 
         <p>Welcome {{ this.userService.loggedInRole }}!</p>
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createCustomerModal">
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createCustomerModal" type="button">
             Create new user
         </button>
-        <br>
-        <br>
-        <form>
-                <input style="max-width: 300px;" class="form-control" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search user ID..">
-        </form> 
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -55,10 +50,10 @@
                     <td>{{customer.firstName}}</td>
                     <td>{{customer.lastName}}</td>
                     <td>
-                        <button class="btn btn-light" data-toggle="modal" data-target="#updateCustomerModal" style="margin-bottom: 5px;">
+                        <button class="btn btn-light" (click)="showUpdateCustomerModal()" style="margin-bottom: 5px;">
                             Update
                         </button>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteCustomerModal" style="margin-bottom: 5px;">
+                        <button class="btn btn-danger" (click)="showDeleteCustomerModal()" style="margin-bottom: 5px;">
                             Delete
                         </button>
                     </td>
@@ -100,66 +95,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Update Customer modal -->
-           <div class="modal fade" id="updateCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update user</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="customerId">Customer ID</label>
-                                    <input id="id1" type="text" class="form-control" #id1 disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input id="firstName1" type="text" class="form-control" #firstName1>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name</label>
-                                    <input id="lastName1" type="text" class="form-control" #lastName1>
-                                </div>  
-                            </form>     
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button (click) = "updateCustomer(id1.value, firstName1.value, lastName1.value)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Delete Customer modal -->
-           <div class="modal fade" id="deleteCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <p>Do you really want to delete this user?</p>
-                                </div>
-                                <div class="form-group" style="visibility: hidden; display: none;">
-                                    <label for="id">Customer ID</label>
-                                    <input id="deleteId" type="text" class="form-control" #deleteId>
-                                </div>
-                            </form>     
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button (click) = "deleteCustomer(deleteId.value)" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
         </div>
     </div>

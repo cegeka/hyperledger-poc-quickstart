@@ -32,11 +32,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="passwordUser">Password</label>
-                    <input disabled type="text" class="form-control" id="passwordUser" value="{{ this.userService.loggedInUser.password }}">
-                </div>
-
-                <div class="form-group">
                     <label for="accountFirstName">First name</label>
                     <input disabled type="text" class="form-control" id="accountFirstName" aria-describedby="emailHelp" value="{{ this.userService.loggedInUser.firstName }}">
                 </div>
@@ -49,48 +44,44 @@
 
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateAccountModal">
+            <button class="btn btn-primary btn-lg" (click)="showUpdateAccountModal()">
                     <i class="fa fa-cog" style="color: #ffffff;"></i> Settings
             </button> 
         </div>
     </div>
 
-    <!-- Update Account modal -->
+    <!-- Update Account modal 
     <div class="modal fade" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update Account</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="customerId">Username</label>
-                                <input id="id2" type="text" class="form-control" #id2 disabled>
-                            </div>
-                            <div class="form-group">
-                                    <label for="customerId">Password</label>
-                                    <input oninput="hashFunction()" id="passwordAccount" aria-describedby="passwordHelp" type="text" class="form-control" #passwordAccount>
-                                    <small id="passwordHelp" class="form-text text-muted">Write your new password here. The application stores the hash of your password.</small>
-                                    <input style="visibility: hidden; display: none;" id="passwordAccountHashResult" type="text" class="form-control" #passwordAccountHashResult>
-                                </div>
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input id="firstName2" type="text" class="form-control" #firstName2>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input id="lastName2" type="text" class="form-control" #lastName2>
-                            </div>  
-                        </form>     
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button (click) = "updateAccount(id2.value, passwordAccountHashResult.value, firstName2.value, lastName2.value)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
-                    </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="customerId">Username</label>
+                            <input id="id2" type="text" class="form-control" #id2 disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input id="firstName2" type="text" class="form-control" #firstName2>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input id="lastName2" type="text" class="form-control" #lastName2>
+                        </div>  
+                    </form>     
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button (click) = "updateAccount(id2.value, firstName2.value, lastName2.value)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    -->
 
 </div>

@@ -5,6 +5,12 @@ import { UserService, UserRole } from '../../../services/user.service';
 import { environment } from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 
+import { UpdateCustomerComponent } from '../../../components/modal/update-customer.component';
+import { DeleteCustomerComponent } from '../../../components/modal/delete-customer.component';
+
+import { DialogService } from "ng2-bootstrap-modal";
+import { UpdateAccountComponent } from '../../../components/modal/update-account.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,12 +18,13 @@ import 'rxjs/add/operator/toPromise';
 })
 export class HomeComponent implements OnInit {
   private customers = [];
+  confirmResult:boolean = null;
 
   processing: boolean;
   UserRole = UserRole; // used in the HTML ngIf conditions
   monitorUrl: string;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private dialogService: DialogService) {
     this.monitorUrl = environment.MonitorUrl;
   }
 
@@ -45,7 +52,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  updateCustomer(id: string, firstName: string, lastName: string) {
+  public updateCustomer(id: string, firstName: string, lastName: string) {
     var spinner = document.getElementById("spinner1");
     spinner.style.display = "block"; 
     this.userService.updateCustomer(id, firstName, lastName).subscribe(() => {
@@ -74,5 +81,39 @@ export class HomeComponent implements OnInit {
       }, 7000 );
     });
   }
+
+  // Update user modal
+  showUpdateCustomerModal() {
+    let disposable = this.dialogService.addDialog(UpdateCustomerComponent, {
+      title:'Confirm title', 
+      message:'Confirm message'})
+      .subscribe((isConfirmed)=>{
+        //Get dialog result
+        this.confirmResult = isConfirmed;
+      });
+      //We can close dialog calling disposable.unsubscribe();
+      //If dialog was not closed manually close it by timeout
+      setTimeout(()=>{
+        disposable.unsubscribe();
+      },10000);
+  }
+
+  // Update user modal
+  showDeleteCustomerModal() {
+    let disposable = this.dialogService.addDialog(DeleteCustomerComponent, {
+      title:'Confirm title', 
+      message:'Confirm message'})
+      .subscribe((isConfirmed)=>{
+        //Get dialog result
+        this.confirmResult = isConfirmed;
+      });
+      //We can close dialog calling disposable.unsubscribe();
+      //If dialog was not closed manually close it by timeout
+      setTimeout(()=>{
+        disposable.unsubscribe();
+      },10000);
+  }
+
+
 
 }

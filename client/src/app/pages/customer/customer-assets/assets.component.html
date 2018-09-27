@@ -5,7 +5,7 @@
     <div class="jumbotron">
         <h1><i class="fa fa-balance-scale"></i> Assets </h1> 
         <p>Manage your assets</p> 
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssetModal">
+        <button class="btn btn-primary btn-lg" (click)="showCreateAssetModal()">
             <i class="fa fa-plus" style="color: #ffffff;"></i> Create new asset
         </button>
     </div>
@@ -45,13 +45,13 @@
                     <td>{{tradeable.assetId}}</td>
                     <td>{{tradeable.description}}</td>
                     <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#updateAssetModal" style="margin-bottom: 5px;">Update</button>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#transferAssetModal" style="margin-bottom: 5px;">Transfer</button>
+                        <button class="btn btn-primary" (click)="showUpdateAssetModal()" style="margin-bottom: 5px;">Update</button>
+                        <button class="btn btn-primary" (click)="showTransferAssetModal()" style="margin-bottom: 5px;">Transfer</button>
                     </td>
                 </tr>
             </table>
     
-            <!-- Create Asset modal -->
+            <!-- Create Asset modal
             <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -82,8 +82,9 @@
                     </div>
                 </div>
             </div>
+            -->
 
-            <!-- Update Asset modal -->
+            <!-- Update Asset modal 
             <div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -115,8 +116,9 @@
                 </div>
             </div>
 
+            -->
 
-            <!-- Transfer asset modal -->
+            <!-- Transfer asset modal 
             <div class="modal fade" id="transferAssetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -151,6 +153,8 @@
                     </div>
                 </div>
             </div>
+
+            -->
 
         </div>
     </div>
