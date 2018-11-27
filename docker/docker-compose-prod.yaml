@@ -1,14 +1,14 @@
 version: '3.5'
 
 services:
-#  landing:
-#    build:
-#      context: ../landing
-#      args:
-#        - MAIN_APP_URL=http://TODO.cloudapp.azure.com:8080
-#    ports:
-#      - 80:80
-#    container_name: hyper-landing
+  landing:
+    build:
+      context: ../landing
+      args:
+        - MAIN_APP_URL=http://TODO.cloudapp.azure.com:8080
+    ports:
+      - 80:80
+    container_name: hyper-landing
 
   frontend:
     build:

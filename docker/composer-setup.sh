@@ -36,7 +36,7 @@ docker-compose $COMPOSER_FILE up --no-start backend
 docker-compose $COMPOSER_FILE run backend ./deploy.sh
 
 # start the backend & import data
-./add-data.sh $COMPOSER_FILE
+./add-data.sh "$COMPOSER_FILE"
 
 # initialize the explorer database
 docker-compose $COMPOSER_FILE up -d explorer-db
