@@ -1,16 +1,14 @@
 version: '3.5'
 
 services:
-  landing:
-    build:
-      context: ../landing
-      args:
-        - MAIN_APP_URL=http://TODO.cloudapp.azure.com:8080
-#    links:
-#      - frontend
-    ports:
-      - 80:80
-    container_name: hyper-landing
+#  landing:
+#    build:
+#      context: ../landing
+#      args:
+#        - MAIN_APP_URL=http://TODO.cloudapp.azure.com:8080
+#    ports:
+#      - 80:80
+#    container_name: hyper-landing
 
   frontend:
     build:
@@ -84,6 +82,8 @@ services:
     environment:
       - HL_FABRIC_VERSION=hlfv11
       - HL_FABRIC_TAG=1.1.0
+      - COMPOSE_CONVERT_WINDOWS_PATHS=${COMPOSE_CONVERT_WINDOWS_PATHS}
+      - COMPOSE_FORCE_WINDOWS_HOST=${COMPOSE_FORCE_WINDOWS_HOST}
       # Make sure the name passed here is identical to the network name set below
       - EXTERNAL_NETWORK_NAME=hyper-quickstart-poc
       - HL_FILES_ROOT_PATH=${PWD}/fabric-orchestrator/fabric-tools/fabric-scripts/hlfv11/composer/
