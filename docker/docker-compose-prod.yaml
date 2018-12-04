@@ -46,33 +46,33 @@ services:
     volumes:
       - .data/composer:/root/.composer
 
-  explorer-db:
-    image: mysql:5.5.59
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: fabricexplorer
-    container_name: hyper-db-explorer
-    volumes:
-      - .data/mysql:/var/lib/mysql
-
-  explorer:
-    build:
-      context: ./explorer
-    environment:
-      DB_USER: root      
-      DB_PASSWORD: example
-      DB_HOST: explorer-db
-    depends_on:
-      - explorer-db
-    links: 
-      - explorer-db
-      - orchestrator
-    ports:
-      # Debug purpose only
-      - 8081:8080
-    container_name: hyper-explorer
-    restart: always
+#  explorer-db:
+#    image: mysql:5.5.59
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: example
+#      MYSQL_DATABASE: fabricexplorer
+#    container_name: hyper-db-explorer
+#    volumes:
+#      - .data/mysql:/var/lib/mysql
+#
+#  explorer:
+#    build:
+#      context: ./explorer
+#    environment:
+#      DB_USER: root      
+#      DB_PASSWORD: example
+#      DB_HOST: explorer-db
+#    depends_on:
+#      - explorer-db
+#    links: 
+#      - explorer-db
+#      - orchestrator
+#    ports:
+#      # Debug purpose only
+#      - 8081:8080
+#    container_name: hyper-explorer
+#    restart: always
 
   orchestrator:
     build:

@@ -51,10 +51,11 @@ timeout /t 5 /NOBREAK
 docker exec -it hyper-backend npm run setup
 
 
+REM # TODO: for now, the explorer functionality is diabled due to unresolved issues within the explorer itself
 REM initialize the explorer database
-docker-compose %DOCKER_FILE% up -d explorer-db
-docker-compose %DOCKER_FILE% up --no-start explorer
-docker-compose %DOCKER_FILE% run explorer ./initDb.sh
+REM docker-compose %DOCKER_FILE% up -d explorer-db
+REM docker-compose %DOCKER_FILE% up --no-start explorer
+REM docker-compose %DOCKER_FILE% run explorer ./initDb.sh
 
 REM Start everything
 docker-compose %DOCKER_FILE% up -d

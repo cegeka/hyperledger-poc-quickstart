@@ -38,10 +38,11 @@ docker-compose $COMPOSER_FILE run backend ./deploy.sh
 # start the backend & import data
 ./add-data.sh "$COMPOSER_FILE"
 
+# TODO: for now, the explorer functionality is diabled due to unresolved issues within the explorer itself
 # initialize the explorer database
-docker-compose $COMPOSER_FILE up -d explorer-db
-docker-compose $COMPOSER_FILE up --no-start explorer
-docker-compose $COMPOSER_FILE run explorer ./initDb.sh
+#docker-compose $COMPOSER_FILE up -d explorer-db
+#docker-compose $COMPOSER_FILE up --no-start explorer
+#docker-compose $COMPOSER_FILE run explorer ./initDb.sh
 
 # Start everything
 docker-compose $COMPOSER_FILE up -d

@@ -89,3 +89,7 @@ The main VM NginX Docker setup exposes the following services:
 * api = `<root URL>:8080/api/`
 * Api explorer = `<root URL>:8080/explorer/` (including trailing slash!)
 * Hyperledger monitor = `<root URL>:8081`
+
+### Hyperledger monitor
+
+**Important**: The Hyperledger monitor feature is currently disabled because the monitor code keeps crashing due to some internal errors.
