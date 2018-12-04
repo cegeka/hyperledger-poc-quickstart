@@ -1,7 +1,10 @@
 <app-banner></app-banner>
 <div class="container">
   <div class="jumbotron">
-    <h1><i class="fa fa-exchange-alt"></i> Tx detail</h1> 
+    <h1>
+      <i class="fa fa-exchange-alt"></i>
+      Tx detail
+    </h1> 
     <div *ngFor="let item of json">
       <ng-container *ngIf="item.key=='transactionId'">
         <p class="txid">{{item.value}}</p>
@@ -20,7 +23,7 @@
             <td>{{item.value}}</td>
           </ng-container>
 
-           <ng-container *ngIf="item.key=='tradeable'">
+          <ng-container *ngIf="item.key=='tradeable'">
             <td>Asset</td>
             <td>{{item.value.split('.')[2]}}</td>
           </ng-container>
@@ -33,13 +36,13 @@
           <ng-container *ngIf="item.key=='newOwner'">
             <td>New Owner</td>
             <td>{{item.value}}</td>
-          </ng-container>
+          </ng-container>     
 
+          <!-- Generic stuff -->
           <ng-container *ngIf="item.key=='transactionTimestamp'">
             <td>Timestamp</td>
             <td>{{item.value | date:'dd MMM yyyy, HH:mm:ss'}}</td>
           </ng-container>
-
         </tr>
       </table>
       <button class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left" style="color: #ffffff"></i> Back</button>

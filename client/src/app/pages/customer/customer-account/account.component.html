@@ -10,14 +10,16 @@
         <div class="col-md-6">
 
             <!-- Transaction alerts -->
-            <div class="alert alert-success alert-dismissible" id="alert-success1" role="alert" style="display:none;">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>       
-                    <a href="#" class="alert-link">You successfully updated your account.</a>
+            <div class="alert alert-success alert-dismissible" id="alert-success" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>       
+                    <a class="alert-link">You successfully updated your account.</a>
             </div>
             
-            <div class="" style="text-align:center;">
+            <div style="text-align:center;">
                 <!-- Spinner -->
-                <div class="mdl-spin" id="spinner1">
+                <div class="mdl-spin" id="spinner">
                     <svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                         <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
                     </svg>
@@ -44,44 +46,41 @@
 
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary btn-lg" (click)="showUpdateAccountModal()">
+            <button class="btn btn-primary btn-lg" (click)="copyUserData()" data-toggle="modal" data-target="#updateAccountModal">
                     <i class="fa fa-cog" style="color: #ffffff;"></i> Settings
             </button> 
         </div>
     </div>
 
-    <!-- Update Account modal 
-    <div class="modal fade" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="customerId">Username</label>
-                            <input id="id2" type="text" class="form-control" #id2 disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input id="firstName2" type="text" class="form-control" #firstName2>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input id="lastName2" type="text" class="form-control" #lastName2>
-                        </div>  
-                    </form>     
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button (click) = "updateAccount(id2.value, firstName2.value, lastName2.value)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
-                </div>
+    <div class="modal fade" id="updateAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" (click)="close()" >&times;</button>
+                <h4 class="modal-title">Update user</h4>
+              </div>
+              <div class="modal-body">
+                      <form>
+                          <div class="form-group">
+                              <label for="customerId">Username</label>
+                              <input id="customerId" type="text" class="form-control" value="{{userCopy.customerId}}" readonly>
+                          </div>
+                          <div class="form-group">
+                              <label for="firstName">First Name</label>
+                              <input id="firstName" name="firstName" type="text" class="form-control" [(ngModel)]="userCopy.firstName" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="lastName">Last Name</label>
+                              <input id="lastName" name ="lastName" type="text" class="form-control" [(ngModel)]="userCopy.lastName" required>
+                          </div>
+                      </form>     
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button (click) = "updateAccount(userCopy.customerId, userCopy.firstName, userCopy.lastName, userCopy.password)" type="button" class="btn btn-primary" data-dismiss="modal" >Update</button>
+                  </div>
             </div>
         </div>
     </div>
-
-    -->
 
 </div>

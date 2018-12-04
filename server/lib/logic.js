@@ -14,6 +14,10 @@
  */
 async function tradeCommodity(trade) { // eslint-disable-line no-unused-vars
 
+    if (trade.tradeable.owner != trade.sender) {
+      throw new Error("Only the comody owner can trade it");
+    }
+
     // set the new owner of the commodity
     trade.tradeable.previousOwner = trade.sender;
 
