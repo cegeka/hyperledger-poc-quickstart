@@ -21,7 +21,7 @@ export class UserService extends BaseResourceService {
   }
 
   // create customer
-  createCustomer(customerId: string, password: string, firstName: string, lastName: string): Observable<any> {    
+  createCustomer(customerId: string, firstName: string, lastName: string, password: string): Observable<any> {    
     return this.jsonRequest(`Customer`, HTTP_VERB.POST, {
       customerId: customerId,
       password: password,
@@ -31,18 +31,10 @@ export class UserService extends BaseResourceService {
   }
 
   // update customer
-  updateCustomer(id: string, firstName: string, lastName: string): Observable<any> {    
+  updateCustomer(id: string, firstName: string, lastName: string, password: string): Observable<any> {    
     return this.jsonRequest(`Customer/${id}`, HTTP_VERB.PUT, {
-      id: id,
-      firstName: firstName,
-      lastName: lastName
-    });
-  }
-
-   // update customer
-  updateAccount(id: string, firstName: string, lastName: string): Observable<any> {    
-    return this.jsonRequest(`Customer/${id}`, HTTP_VERB.PUT, {
-      id: id,
+      customerId: id,
+      password: password,
       firstName: firstName,
       lastName: lastName
     });
@@ -50,9 +42,7 @@ export class UserService extends BaseResourceService {
 
   // delete customer
   deleteCustomer(id: string): Observable<any> {    
-    return this.jsonRequest(`Customer/${id}`, HTTP_VERB.DELETE, {
-      id: id
-    });
+    return this.jsonRequest(`Customer/${id}`, HTTP_VERB.DELETE);
   }
 
   // log in with role
@@ -72,13 +62,12 @@ export class UserService extends BaseResourceService {
       .map((res) => {
 
         
-        if (!password || password != userName) {
+        if (res.password && password != res.password) {
           throw 'Invalid password';
         }
-        
-       
+               
         this.loggedInUser = res;
-        this.loggedInUserName = userName;
+        this.loggedInUserName = res.customerId;
         this.loggedInRole = userRole;
         return userRole;
       });

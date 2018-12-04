@@ -11,19 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./tx-detail.component.css']
 })
 export class TxDetailComponent implements OnInit {
-  tx: any
   json: Array<any>;
   id: string;
-  private sub: any;
   TransactionTypeKey = "transactionType";
 
   constructor(private historyService: HistoryService, private userService: UserService, private route: ActivatedRoute, private router: Router, private location: Location) {
   }
 
   goBack() {
-    // window.history.back();
     this.location.back();
-    console.log( 'goBack()...' );
   }
 
   ngOnInit() {
@@ -31,14 +27,13 @@ export class TxDetailComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     
-    this.sub = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.id = params['id'];
     });
     this.json = [];
     this.historyService.getTx(this.id).subscribe((response) => {
-      this.tx = response;
-      for (let key in this.tx) {
-        this.json.push({ key: key, value: this.tx[key] });
+      for (let key in response) {
+        this.json.push({ key: key, value: response[key] });
       }
       this.addSpecificTx();
     });

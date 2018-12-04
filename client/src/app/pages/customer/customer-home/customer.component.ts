@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService, UserRole } from '../../../services/user.service';
-import { environment } from '../../../../environments/environment';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-customer',
@@ -9,17 +8,14 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  processing: boolean;
-  UserRole = UserRole; // used in the HTML ngIf conditions
-  monitorUrl: string;
-  
+  user: any;
 
   constructor(private userService: UserService, private router: Router) {
-    this.monitorUrl = environment.MonitorUrl;
   }
 
   ngOnInit() {
-    if (!this.userService.loggedInUser) {
+    this.user = this.userService.loggedInUser;
+    if (!this.user) {
       this.router.navigate(['/login']);
       window.location.reload();
     }  

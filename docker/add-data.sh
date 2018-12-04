@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose up -d backend
+docker-compose $1 up -d backend
 
 sleep 5
 
